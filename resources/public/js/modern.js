@@ -22541,6 +22541,34 @@ cljs.core.special_symbol_QMARK_ = function special_symbol_QMARK_(x) {
   "letfn*", "letfn*", 1548249632, null), null, new cljs.core.Symbol(null, "if", "if", -1640528170, null), null, new cljs.core.Symbol(null, "new", "new", -1640422567, null), null, new cljs.core.Symbol(null, "ns", "ns", -1640528002, null), null, new cljs.core.Symbol(null, "deftype*", "deftype*", -978581244, null), null, new cljs.core.Symbol(null, "let*", "let*", -1637213400, null), null, new cljs.core.Symbol(null, "js*", "js*", -1640426054, null), null, new cljs.core.Symbol(null, "fn*", "fn*", -1640430053, 
   null), null, new cljs.core.Symbol(null, "recur", "recur", -1532142362, null), null, new cljs.core.Symbol(null, "set!", "set!", -1637004872, null), null, new cljs.core.Symbol(null, ".", ".", -1640531481, null), null, new cljs.core.Symbol(null, "quote", "quote", -1532577739, null), null, new cljs.core.Symbol(null, "throw", "throw", -1530191713, null), null, new cljs.core.Symbol(null, "def", "def", -1640432194, null), null], null), null), x)
 };
+goog.provide("modern_cljs.login");
+goog.require("cljs.core");
+modern_cljs.login.validate_form = function validate_form() {
+  var email = document.getElementById("email");
+  var password = document.getElementById("password");
+  if(cljs.core.count.call(null, email.value) > 0 && cljs.core.count.call(null, password.value) > 0) {
+    return true
+  }else {
+    alert("Please complete the form");
+    return false
+  }
+};
+modern_cljs.login.init = function init() {
+  if(cljs.core.truth_(function() {
+    var and__3273__auto__ = document;
+    if(cljs.core.truth_(and__3273__auto__)) {
+      return document.getElementById
+    }else {
+      return and__3273__auto__
+    }
+  }())) {
+    var login_form = document.getElementById("loginForm");
+    return login_form.onsubmit = modern_cljs.login.validate_form
+  }else {
+    return null
+  }
+};
+window.onload = modern_cljs.login.init;
 goog.provide("modern_cljs.modern");
 goog.require("cljs.core");
 document.write("Hello, ClojureScript!");
