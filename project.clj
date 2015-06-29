@@ -18,11 +18,33 @@
          }
 
   :cljsbuild {:builds
-              [{
+              {
+               :dev
+               {
                 :source-paths ["src/cljs"]
                 :compiler {
                            :output-to "resources/public/js/modern.js"
                            :optimizations :whitespace
                            :pretty-print true
                            }
-                }]})
+                }
+               :pre-prod
+               {
+                :source-paths ["src/cljs"]
+                :compiler {
+                           :output-to "resources/public/js/modern_pre.js"
+                           :optimizations :simple
+                           :pretty-print false
+                           }
+                }
+               :prod
+               {
+                :source-paths ["src/cljs"]
+                :compiler {
+                           :output-to "resources/public/js/modern_prod.js"
+                           :optimizations :advanced
+                           :pretty-print false
+                           }
+                }
+               }
+              })
