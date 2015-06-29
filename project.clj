@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :source-paths ["src/clj" "src/cljs"]
+  :source-paths ["src/clj" "src/cljs" "src/brepl"]
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2069"]
                  [compojure "1.1.6"]
@@ -21,7 +21,7 @@
               {
                :dev
                {
-                :source-paths ["src/cljs"]
+                :source-paths ["src/cljs" "src/brepl"]
                 :compiler {
                            :output-to "resources/public/js/modern.js"
                            :optimizations :whitespace
@@ -30,7 +30,7 @@
                 }
                :pre-prod
                {
-                :source-paths ["src/cljs"]
+                :source-paths ["src/cljs" "src/brepl"]
                 :compiler {
                            :output-to "resources/public/js/modern_pre.js"
                            :optimizations :simple

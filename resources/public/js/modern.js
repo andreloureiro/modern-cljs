@@ -28799,7 +28799,35 @@ if(cljs.core.truth_(typeof HTMLCollection != "undefined")) {
   }
 }else {
 }
-;goog.provide("modern_cljs.login");
+;goog.provide("modern_cljs.shopping");
+goog.require("cljs.core");
+goog.require("domina");
+goog.require("domina");
+modern_cljs.shopping.calculate = function calculate() {
+  var quantity = domina.value.call(null, domina.by_id.call(null, "quantity"));
+  var price = domina.value.call(null, domina.by_id.call(null, "price"));
+  var tax = domina.value.call(null, domina.by_id.call(null, "tax"));
+  var discount = domina.value.call(null, domina.by_id.call(null, "discount"));
+  domina.set_value_BANG_.call(null, domina.by_id.call(null, "total"), (quantity * price * (1 + tax / 100) - discount).toFixed(2));
+  return false
+};
+modern_cljs.shopping.init = function init() {
+  if(cljs.core.truth_(function() {
+    var and__3273__auto__ = document;
+    if(cljs.core.truth_(and__3273__auto__)) {
+      return document.getElementById
+    }else {
+      return and__3273__auto__
+    }
+  }())) {
+    var theForm = document.getElementById("shoppingForm");
+    return theForm.onsubmit = modern_cljs.shopping.calculate
+  }else {
+    return null
+  }
+};
+window.onload = modern_cljs.shopping.init;
+goog.provide("modern_cljs.login");
 goog.require("cljs.core");
 goog.require("domina");
 goog.require("domina");
@@ -28829,34 +28857,6 @@ modern_cljs.login.init = function init() {
   }
 };
 window.onload = modern_cljs.login.init;
-goog.provide("modern_cljs.shopping");
-goog.require("cljs.core");
-goog.require("domina");
-goog.require("domina");
-modern_cljs.shopping.calculate = function calculate() {
-  var quantity = domina.value.call(null, domina.by_id.call(null, "quantity"));
-  var price = domina.value.call(null, domina.by_id.call(null, "price"));
-  var tax = domina.value.call(null, domina.by_id.call(null, "tax"));
-  var discount = domina.value.call(null, domina.by_id.call(null, "discount"));
-  domina.set_value_BANG_.call(null, domina.by_id.call(null, "total"), (quantity * price * (1 + tax / 100) - discount).toFixed(2));
-  return false
-};
-modern_cljs.shopping.init = function init() {
-  if(cljs.core.truth_(function() {
-    var and__3273__auto__ = document;
-    if(cljs.core.truth_(and__3273__auto__)) {
-      return document.getElementById
-    }else {
-      return and__3273__auto__
-    }
-  }())) {
-    var theForm = document.getElementById("shoppingForm");
-    return theForm.onsubmit = modern_cljs.shopping.calculate
-  }else {
-    return null
-  }
-};
-window.onload = modern_cljs.shopping.init;
 goog.provide("modern_cljs.modern");
 goog.require("cljs.core");
 document.write("Hello, ClojureScript!");
